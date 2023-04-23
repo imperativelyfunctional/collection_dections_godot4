@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://crlnmms6avefo"]
+
+[ext_resource type="Texture2D" uid="uid://deane2dwnyr6r" path="res://scenes/boss/canon.png" id="1_qpiy3"]
+[ext_resource type="Script" path="res://scenes/boss/canon.gd" id="2_snxjb"]
+
+[node name="Canon" type="Sprite2D"]
+modulate = Color(1, 0.596078, 0.423529, 1)
+self_modulate = Color(1.19, 1.78, 2.36, 1)
+position = Vector2(292, 141)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("1_qpiy3")
+script = ExtResource("2_snxjb")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 3.0
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

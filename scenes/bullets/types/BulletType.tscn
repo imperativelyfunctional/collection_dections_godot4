@@ -1,0 +1,29 @@
+[gd_scene load_steps=3 format=3 uid="uid://b6ah0oie1m8lo"]
+
+[ext_resource type="Script" path="res://scenes/bullets/types/bullet_type.gd" id="1_melfh"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_h7qhk"]
+radius = 16.0312
+
+[node name="Arrow" type="Sprite2D"]
+position = Vector2(142, 366)
+script = ExtResource("1_melfh")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+scale = Vector2(0.3, 0.3)
+amount = 100
+speed_scale = 4.71
+explosiveness = 0.12
+randomness = 0.12
+lifetime_randomness = 0.1
+emission_shape = 1
+emission_sphere_radius = 55.99
+gravity = Vector2(2.08165e-12, 2.08165e-12)
+linear_accel_min = 23.23
+linear_accel_max = 23.23
+color = Color(1, 1, 0.356863, 0.533333)
+
+[node name="Area2D" type="Area2D" parent="." groups=["bullet_types"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_h7qhk")

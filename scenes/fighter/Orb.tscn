@@ -1,0 +1,45 @@
+[gd_scene load_steps=7 format=3 uid="uid://cy32wbppp0n1p"]
+
+[ext_resource type="Texture2D" uid="uid://caf26qm7fsyth" path="res://scenes/fighter/orb.png" id="1_cw8kp"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t3yak"]
+atlas = ExtResource("1_cw8kp")
+region = Rect2(0, 0, 30, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_10f17"]
+atlas = ExtResource("1_cw8kp")
+region = Rect2(30, 0, 30, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_drmik"]
+atlas = ExtResource("1_cw8kp")
+region = Rect2(60, 0, 30, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_744fg"]
+atlas = ExtResource("1_cw8kp")
+region = Rect2(90, 0, 30, 30)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_n3qck"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t3yak")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_10f17")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_drmik")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_744fg")
+}],
+"loop": true,
+"name": &"new_animation",
+"speed": 5.0
+}]
+
+[node name="orb" type="AnimatedSprite2D"]
+position = Vector2(427, 705)
+sprite_frames = SubResource("SpriteFrames_n3qck")
+animation = &"new_animation"
+autoplay = "new_animation"

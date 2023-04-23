@@ -1,0 +1,46 @@
+[gd_scene load_steps=7 format=3 uid="uid://cbxtle2uacoyx"]
+
+[ext_resource type="Shader" path="res://scenes/main/main.gdshader" id="1_nymc6"]
+[ext_resource type="Script" path="res://scenes/main/main.gd" id="1_plokm"]
+[ext_resource type="PackedScene" uid="uid://dc67fmav1f8tn" path="res://scenes/fighter/Fighter.tscn" id="2_ffe2f"]
+[ext_resource type="PackedScene" uid="uid://ce0xfesllc0y5" path="res://scenes/boss/Boss.tscn" id="5_qhv8n"]
+
+[sub_resource type="Environment" id="Environment_nivty"]
+background_mode = 3
+ambient_light_source = 3
+glow_enabled = true
+glow_intensity = 5.15
+glow_strength = 0.94
+glow_blend_mode = 0
+glow_hdr_threshold = 0.63
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fem7u"]
+shader = ExtResource("1_nymc6")
+shader_parameter/EPS = 0.01
+shader_parameter/mouse = null
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_plokm")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_nivty")
+
+[node name="Background" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_fem7u")
+offset_right = 600.0
+offset_bottom = 800.0
+metadata/_edit_lock_ = true
+
+[node name="Boss" parent="." instance=ExtResource("5_qhv8n")]
+self_modulate = Color(2.96, 1.77, 1.18, 1)
+position = Vector2(315, 136)
+
+[node name="Fighter" parent="." instance=ExtResource("2_ffe2f")]
+z_index = 1
+position = Vector2(310, 629)
+
+[node name="BulletChangeTimer" type="Timer" parent="."]
+wait_time = 6.0
+autostart = true
+
+[connection signal="timeout" from="BulletChangeTimer" to="." method="_on_bullet_change_timer_timeout"]

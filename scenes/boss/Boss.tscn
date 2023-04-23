@@ -1,0 +1,37 @@
+[gd_scene load_steps=4 format=3 uid="uid://ce0xfesllc0y5"]
+
+[ext_resource type="Texture2D" uid="uid://3m8762vxxxv" path="res://scenes/boss/boss.png" id="1_i3vsn"]
+[ext_resource type="Script" path="res://scenes/boss/boss.gd" id="2_2rnxc"]
+[ext_resource type="PackedScene" uid="uid://crlnmms6avefo" path="res://scenes/boss/Canon.tscn" id="3_xjvgc"]
+
+[node name="Boss" type="Sprite2D"]
+texture = ExtResource("1_i3vsn")
+script = ExtResource("2_2rnxc")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
+position = Vector2(-66.5, 18.6438)
+scale = Vector2(1.51426, 0.914569)
+polygon = PackedVector2Array(9.57561, -158.642, 33.3496, -158.642, 39.9535, -138.877, 54.482, -138.877, 59.7651, -160.838, 79.5767, -163.035, 88.8222, 28.0298, 78.256, 67.5604, 59.7651, 67.5604, 50.5197, 120.268, 39.9535, 126.856, 29.3873, 71.9527, 5.61329, 56.5797, 5.61329, 12.6568, -0.990589, -24.6776)
+
+[node name="Canon" parent="." instance=ExtResource("3_xjvgc")]
+position = Vector2(-33, 1)
+
+[node name="Canon2" parent="." instance=ExtResource("3_xjvgc")]
+position = Vector2(32, -2)
+rotate_clockwise = true
+
+[node name="Canon3" parent="." instance=ExtResource("3_xjvgc")]
+position = Vector2(-32, 58)
+
+[node name="Canon4" parent="." instance=ExtResource("3_xjvgc")]
+position = Vector2(29, 57)
+rotate_clockwise = true
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 3.0
+autostart = true
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

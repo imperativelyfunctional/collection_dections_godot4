@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://hejtuls6w4o6"]
+
+[ext_resource type="Texture2D" uid="uid://jknm3n016pd1" path="res://scenes/bullets/arrow/arrow.png" id="1_sg46i"]
+[ext_resource type="Script" path="res://scenes/bullets/arrow/arrow_bullet.gd" id="2_ocoe2"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_75txa"]
+blend_mode = 1
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_idf5h"]
+size = Vector2(32, 12)
+
+[node name="ArrowBullet" type="Sprite2D"]
+self_modulate = Color(0.965081, 0.7491, 0.40578, 1)
+material = SubResource("CanvasItemMaterial_75txa")
+texture = ExtResource("1_sg46i")
+script = ExtResource("2_ocoe2")
+
+[node name="Area2D" type="Area2D" parent="." groups=["bullets"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(1, 0)
+shape = SubResource("RectangleShape2D_idf5h")

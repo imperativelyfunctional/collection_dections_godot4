@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://dc67fmav1f8tn"]
+
+[ext_resource type="Texture2D" uid="uid://xdpt5j2bsdla" path="res://scenes/fighter/fighter.png" id="1_85ws3"]
+[ext_resource type="Script" path="res://scenes/fighter/fighter.gd" id="2_t7e1x"]
+[ext_resource type="PackedScene" uid="uid://cy32wbppp0n1p" path="res://scenes/fighter/Orb.tscn" id="3_peknn"]
+
+[node name="Fighter" type="Sprite2D"]
+self_modulate = Color(6.47, 1.18, 0.61, 1)
+position = Vector2(304, 642)
+texture = ExtResource("1_85ws3")
+script = ExtResource("2_t7e1x")
+speed = 600
+
+[node name="LeftOrb" parent="." instance=ExtResource("3_peknn")]
+position = Vector2(-38, 27)
+
+[node name="RightOrb" parent="." instance=ExtResource("3_peknn")]
+position = Vector2(36, 26)
+flip_h = true
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
+polygon = PackedVector2Array(5.5, -35, 14, 2, 22.5, 8.4, 22.5, 28.2, 15.8, 39, -15.5, 39, -22.5, 29.4, -22.5, 8.5, -13.5, 1.1, -13.5, -1.2, -4.5, -38, -4.5, -39, 5.5, -39)
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

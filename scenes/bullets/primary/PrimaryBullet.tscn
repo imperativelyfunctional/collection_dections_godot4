@@ -1,0 +1,59 @@
+[gd_scene load_steps=9 format=3 uid="uid://ijv0d3jkhwte"]
+
+[ext_resource type="Texture2D" uid="uid://bwhqf1p45cufs" path="res://scenes/bullets/primary/prmary.png" id="1_kdril"]
+[ext_resource type="Script" path="res://scenes/bullets/directional_bullet.gd" id="2_wr4ql"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k4xad"]
+atlas = ExtResource("1_kdril")
+region = Rect2(0, 0, 259, 170)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8h083"]
+atlas = ExtResource("1_kdril")
+region = Rect2(259, 0, 259, 170)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_otpkq"]
+atlas = ExtResource("1_kdril")
+region = Rect2(518, 0, 259, 170)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fnben"]
+atlas = ExtResource("1_kdril")
+region = Rect2(777, 0, 259, 170)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_l87lr"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k4xad")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8h083")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_otpkq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fnben")
+}],
+"loop": true,
+"name": &"new_animation",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tbx7s"]
+radius = 60.0
+height = 120.0
+
+[node name="HomingBullet" type="AnimatedSprite2D"]
+self_modulate = Color(9.47, 1.19, 0, 1)
+position = Vector2(292, 141)
+scale = Vector2(0.2, 0.2)
+sprite_frames = SubResource("SpriteFrames_l87lr")
+animation = &"new_animation"
+autoplay = "new_animation"
+script = ExtResource("2_wr4ql")
+
+[node name="Area2D" type="Area2D" parent="." groups=["enemy_bullets"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(70, 5)
+shape = SubResource("CapsuleShape2D_tbx7s")
