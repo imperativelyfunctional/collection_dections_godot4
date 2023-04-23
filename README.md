@@ -7,4 +7,4 @@ https://discord.gg/bdSe7hvNb6
 Youtube demo: https://youtu.be/jAYvIU1oFEQ
 
 
-![demo](https://github.com/imperativelyfunctional/design_pattern_space_shooter/blob/main/demo.gif)
+![demo](https://github.com/imperativelyfunctional/collection_dections_godot4/blob/main/demo.gif)
